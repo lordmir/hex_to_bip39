@@ -151,8 +151,8 @@ def main():
         print ""
         print "*** %s ***" % base58.encode(decode(phrase, words))
     print ""
-    print "If this is your first time encoding/decoding, it is recommended that you run this"
-    print "utility again in reverse in order to verify this data."
+    print "If this is your first time encoding/decoding, it is recommended that you run"
+    print "this utility again in reverse in order to verify this data."
     print ""
     raw_input("Please copy this information somewhere private. Press ENTER once done.")
     print "Complete!"
