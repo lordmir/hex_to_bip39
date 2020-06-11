@@ -12,11 +12,11 @@ def encode(num):
 	
 	while (num >= base_count):	
 		mod = num % base_count
-		encode = alphabet[mod] + encode
-		num = num / base_count
+		encode = alphabet[int(mod)] + encode
+		num = num // base_count
 
 	if (num):
-		encode = alphabet[num] + encode
+		encode = alphabet[int(num)] + encode
 
 	return encode
 
