@@ -93,7 +93,7 @@ def main():
     while keytype < '1' or keytype > '3':
         print "Please enter the input key type:"
         print "  1. Base58   (Contains all upper- and lower-case characters as well as digits)"
-        print "  2. Hex      (Only contains digits and the characters A-F)"
+        print "  2. Hex      (Only contains digits and the characters A-F, may start with '0x')"
         print "  3. Wordlist (A series of English words)"
         keytype = raw_input("> ")
     if keytype == '1':
@@ -106,7 +106,7 @@ def main():
            except:
               print "Bad BASE58 Key!"
               key = 0
-    if keytype == '2':
+    elif keytype == '2':
         key = 0
         while key <= 0:
            inkey = raw_input("Please enter the private key: ")
@@ -116,7 +116,7 @@ def main():
            except:
               print "Bad HEX Key!"
               key = 0
-    if keytype == '3':
+    elif keytype == '3':
         phrase = []
         while phrase == []:
             word = None
@@ -147,9 +147,14 @@ def main():
         print "The following is the wordlist that corresponds to this private key:"
         print_words(encode(key, words))
     else:
+        key = decode(phrase, words)
         print "The following is the private key that corresponds to the wordlist just entered:"
         print ""
-        print "*** %s ***" % base58.encode(decode(phrase, words))
+        print "BASE58:"
+        print "*** %s ***" % base58.encode(key)
+        print ""
+        print "HEX:"
+        print "*** %s ***" % hex(key)
     print ""
     print "If this is your first time encoding/decoding, it is recommended that you run"
     print "this utility again in reverse in order to verify this data."
